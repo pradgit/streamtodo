@@ -1,14 +1,25 @@
 import streamlit as st
 import functionsfortodo as f
-st.title("Pradnya Todo App with Streamlit")
-st.subheader("Lets add some work to do")
-st.write("Lets start with something")
 
+#add streamlit python files in pages folder
+#pradtodoliststreamlit
+
+#layout adjustment
+st.set_page_config(layout="wide")
+
+st.title("Pradnya Todo App with Streamlit")
+st.write("Start adding Pending tasks")
+
+#common variable to store the TODOS
 todovar = f.get_todos()
+print(todovar)
+
+
 def addtodo():
     todo = st.session_state["newtodo"] + "\n"
     todovar.append(todo)
     f.write_todos(todovar)
+    st.session_state["newtodo"] = ""
 
 #st.checkbox("Buy grocery for weekend")
 for index, work in enumerate(todovar):
